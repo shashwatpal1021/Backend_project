@@ -1125,6 +1125,201 @@ const findSumPairs = (arr, value) => {
     
     sumsLookup[arr[i]] = true;
   }
+
+
+
+Here are the solutions to the various problems you posted, with the respective JavaScript functions provided:
+
+### 1. Finding the Largest Element in an Array
+```javascript
+function largestElement1(arr) {
+  return Math.max(...arr);
+}
+
+function largestElement2(arr) {
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+// Example usage:
+// console.log(largestElement2([2, 5, 1, 3, 0, 1])); // Output: 5
+```
+
+### 2. Finding the Second Smallest and Second Largest Elements in an Array
+```javascript
+function secondLargestElement1(arr) {
+  let max = arr[0];
+  let small = arr[0];
+  let secondSmall = arr[0];
+  let secondMax = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      secondMax = max;
+      max = arr[i];
+    } else if (arr[i] < max && arr[i] > secondMax) {
+      secondMax = arr[i];
+    }
+    if (arr[i] < small) {
+      secondSmall = small;
+      small = arr[i];
+    } else if (arr[i] > small && arr[i] < secondSmall) {
+      secondSmall = arr[i];
+    }
+  }
+  return [secondSmall, secondMax];
+}
+
+// Example usage:
+// console.log(secondLargestElement1([2, 5, 1, 3, 0, 1])); // Output: [1, 3]
+```
+
+### 3. Checking if an Array is Sorted
+```javascript
+function isSorted1(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] > arr[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Example usage:
+// console.log(isSorted1([1, 2, 3, 4])); // Output: true
+// console.log(isSorted1([1, 3, 2, 4])); // Output: false
+```
+
+### 4. Removing Duplicates from an Array
+```javascript
+function removeDuplicates1(arr) {
+  return [...new Set(arr)];
+}
+
+function removeDuplicates2(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!newArr.includes(arr[i])) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+// Example usage:
+// console.log(removeDuplicates2([1, 2, 2, 3, 4, 4])); // Output: [1, 2, 3, 4]
+```
+
+### 5. Left Rotate the Array by One
+```javascript
+function leftRotate1(arr) {
+  let temp = arr[0];
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
+  }
+  arr[arr.length - 1] = temp;
+  return arr;
+}
+
+// Example usage:
+// console.log(leftRotate1([1, 2, 3, 4])); // Output: [2, 3, 4, 1]
+```
+
+### 6. Right Rotate the Array by One
+```javascript
+function rightRotate1(arr) {
+  let temp = arr[arr.length - 1];
+  for (let i = arr.length - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
+  }
+  arr[0] = temp;
+  return arr;
+}
+
+// Example usage:
+// console.log(rightRotate1([1, 2, 3, 4])); // Output: [4, 1, 2, 3]
+```
+
+### 7. Left Rotate the Array by `k` Elements
+```javascript
+function leftRotateByK1(arr, k) {
+  return arr.slice(k).concat(arr.slice(0, k));
+}
+
+// Example usage:
+// console.log(leftRotateByK1([1, 2, 3, 4, 5], 2)); // Output: [3, 4, 5, 1, 2]
+```
+
+### 8. Right Rotate the Array by `k` Elements
+```javascript
+function rightRotateByK2(arr, k) {
+  return arr.slice(arr.length - k).concat(arr.slice(0, arr.length - k));
+}
+
+// Example usage:
+// console.log(rightRotateByK2([1, 2, 3, 4, 5], 2)); // Output: [4, 5, 1, 2, 3]
+```
+
+### 9. Moving All Zeros to the End of the Array
+```javascript
+function moveZerosToEnd1(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      arr[count] = arr[i];
+      count++;
+    }
+  }
+  for (let i = count; i < arr.length; i++) {
+    arr[i] = 0;
+  }
+  return arr;
+}
+
+// Example usage:
+// console.log(moveZerosToEnd1([1, 0, 2, 3, 0, 4, 0, 1])); // Output: [1, 2, 3, 4, 1, 0, 0, 0]
+```
+
+### 10. Union of Two Sorted Arrays
+```javascript
+function union1(arr1, arr2) {
+  let unionArr = [];
+  let i = 0;
+  let j = 0;
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      unionArr.push(arr1[i]);
+      i++;
+    } else if (arr1[i] > arr2[j]) {
+      unionArr.push(arr2[j]);
+      j++;
+    } else {
+      unionArr.push(arr1[i]);
+      i++;
+      j++;
+    }
+  }
+  while (i < arr1.length) {
+    unionArr.push(arr1[i]);
+    i++;
+  }
+  while (j < arr2.length) {
+    unionArr.push(arr2[j]);
+    j++;
+  }
+  return unionArr;
+}
+
+// Example usage:
+// console.log(union1([1, 2, 3, 4, 5], [3, 4, 5, 6, 7])); // Output: [1, 2, 3, 4, 5, 6, 7]
+```
+
+Let me know if you'd like more explanations or further implementations of the remaining algorithms!
   
   return output;
 }
