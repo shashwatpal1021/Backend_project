@@ -1127,7 +1127,7 @@ const findSumPairs = (arr, value) => {
   }
 
 
-
+~~~
 Here are the solutions to the various problems you posted, with the respective JavaScript functions provided:
 
 ### 1. Finding the Largest Element in an Array
